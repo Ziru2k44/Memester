@@ -8,4 +8,6 @@ public class AlbumResponse {
 
 	private Albums albums;
 
+	private String id;
+
 }
