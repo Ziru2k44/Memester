@@ -1,6 +1,7 @@
 package com.primlook.memester.infrastructure.facebook.service;
 
 import com.primlook.memester.infrastructure.facebook.domain.album.AlbumResponse;
+import com.primlook.memester.infrastructure.facebook.domain.album.Albums;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +18,10 @@ public interface UploadService {
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     AlbumResponse getAlbums();
 
-    @GetMapping(path = "/{id}/albums?fields=name,count,cover_photo{picture}&limit=5",
+    @GetMapping(path = "/{id}/albums?fields=name,count,cover_photo%7Bpicture%7D%0A&limit=5",
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    AlbumResponse getPagingAlbums(@PathVariable("id") String albumId,
-                                  @RequestParam(name = "after", required = false) String after,
-                                  @RequestParam(name = "before", required = false) String before);
+    Albums getPagingAlbums(@PathVariable("id") String albumId,
+                           @RequestParam(name = "after", required = false) String after,
+                           @RequestParam(name = "before", required = false) String before);
 
 }

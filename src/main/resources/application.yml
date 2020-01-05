@@ -1,6 +1,19 @@
 logging:
   level:
-    root: DEBUG
+    com:
+      primlook:
+        memester:
+          infrastructure:
+            facebook:
+              service:
+                UploadService: DEBUG
+
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
 
 spring:
   datasource:
