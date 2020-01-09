@@ -1,4 +1,4 @@
-package com.primlook.memester.infrastructure.facebook.domain.album;
+package com.primlook.memester.infrastructure.facebook.domain.common;
 
 import lombok.Data;
 

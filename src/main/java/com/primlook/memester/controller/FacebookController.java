@@ -2,6 +2,7 @@ package com.primlook.memester.controller;
 
 import com.primlook.memester.infrastructure.facebook.domain.album.AlbumResponse;
 import com.primlook.memester.infrastructure.facebook.domain.album.Albums;
+import com.primlook.memester.infrastructure.facebook.domain.photo.Photos;
 import com.primlook.memester.infrastructure.facebook.service.UploadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,4 +31,12 @@ public class FacebookController {
                             @RequestParam(name = "before", required = false) String before) {
         return uploadService.getPagingAlbums(albumId, after, before);
     }
+
+    @GetMapping("/album/{id}/photos")
+    @PreAuthorize("hasRole('USER')")
+    public Photos getPhotos(@PathVariable("id") String albumId) {
+        return uploadService.getPhotos(albumId);
+    }
+
+
 }
