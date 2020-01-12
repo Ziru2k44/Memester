@@ -24,6 +24,8 @@ public interface UploadService {
                            @RequestParam(name = "before", required = false) String before);
 
     @GetMapping(path = "/{id}/photos?fields=name,webp_images,created_time&limit=10", produces = MediaType.APPLICATION_JSON_VALUE)
-    Photos getPhotos(@PathVariable("id") String albumId);
+    Photos getPhotos(@PathVariable("id") String albumId,
+                     @RequestParam(name = "after", required = false) String after,
+                     @RequestParam(name = "before", required = false) String before);
 
 }

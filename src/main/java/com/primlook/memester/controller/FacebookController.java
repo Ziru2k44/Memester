@@ -3,7 +3,7 @@ package com.primlook.memester.controller;
 import com.primlook.memester.infrastructure.facebook.domain.album.AlbumResponse;
 import com.primlook.memester.infrastructure.facebook.domain.album.Albums;
 import com.primlook.memester.infrastructure.facebook.domain.photo.Photos;
-import com.primlook.memester.infrastructure.facebook.service.UploadService;
+import com.primlook.memester.service.FacebookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/facebook")
 public class FacebookController {
 
-    private final UploadService uploadService;
+    private final FacebookService facebookService;
 
     @GetMapping("/albums")
     @PreAuthorize("hasRole('USER')")
     public AlbumResponse getAlbums() {
-        return uploadService.getAlbums();
+        return facebookService.getAlbums();
     }
 
     @GetMapping("/albums/{id}")
@@ -29,13 +29,15 @@ public class FacebookController {
     public Albums getAlbums(@PathVariable("id") String albumId,
                             @RequestParam(name = "after", required = false) String after,
                             @RequestParam(name = "before", required = false) String before) {
-        return uploadService.getPagingAlbums(albumId, after, before);
+        return facebookService.getPagingAlbums(albumId, after, before);
     }
 
     @GetMapping("/album/{id}/photos")
     @PreAuthorize("hasRole('USER')")
-    public Photos getPhotos(@PathVariable("id") String albumId) {
-        return uploadService.getPhotos(albumId);
+    public Photos getPhotos(@PathVariable("id") String albumId,
+                            @RequestParam(name = "after", required = false) String after,
+                            @RequestParam(name = "before", required = false) String before) {
+        return facebookService.getPhotos(albumId, after, before);
     }
 
 
