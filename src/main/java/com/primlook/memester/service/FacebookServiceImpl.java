@@ -30,7 +30,7 @@ public class FacebookServiceImpl implements FacebookService {
     public Photos getPhotos(String albumId, String after, String before) {
         Photos photos = uploadService.getPhotos(albumId, after, before);
 
-        photos.getData().parallelStream().forEach(photo -> photo.setWebpImages(photo.getWebpImages().subList(photo.getWebpImages().size() - 1, photo.getWebpImages().size())));
+        //photos.getData().parallelStream().forEach(photo -> photo.setWebpImages(photo.getWebpImages().subList(photo.getWebpImages().size() - 1, photo.getWebpImages().size())));
 
         return photos;
     }
