@@ -1,7 +1,8 @@
 package com.primlook.memester.security;
 
 
-import com.primlook.memester.domain.AuthProvider;
+
+import com.primlook.memester.domain.util.AuthProvider;
 import com.primlook.memester.exception.OAuth2AuthenticationProcessingException;
 
 import java.util.Map;

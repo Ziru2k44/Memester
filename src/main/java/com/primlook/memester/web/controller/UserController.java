@@ -1,4 +1,4 @@
-package com.primlook.memester.controller;
+package com.primlook.memester.web.controller;
 
 import com.primlook.memester.domain.User;
 import com.primlook.memester.exception.ResourceNotFoundException;

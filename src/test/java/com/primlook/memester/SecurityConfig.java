@@ -1,5 +1,6 @@
 package com.primlook.memester;
 
+
 import com.primlook.memester.security.*;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Configuration;

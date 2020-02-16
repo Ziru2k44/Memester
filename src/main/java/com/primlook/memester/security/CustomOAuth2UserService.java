@@ -1,8 +1,10 @@
 package com.primlook.memester.security;
 
-import com.primlook.memester.domain.AuthProvider;
+import com.primlook.memester.domain.Profile;
 import com.primlook.memester.domain.User;
+import com.primlook.memester.domain.util.AuthProvider;
 import com.primlook.memester.exception.OAuth2AuthenticationProcessingException;
+import com.primlook.memester.repository.ProfileRepository;
 import com.primlook.memester.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -21,6 +23,8 @@ import java.util.Optional;
 public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
     private UserRepository userRepository;
+
+    private ProfileRepository profileRepository;
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest oAuth2UserRequest) throws OAuth2AuthenticationException {
@@ -60,6 +64,16 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     }
 
     private User registerNewUser(OAuth2UserRequest oAuth2UserRequest, OAuth2UserInfo oAuth2UserInfo) {
+        Profile profile = Profile.builder()
+                .name(oAuth2UserInfo.getName())
+                .premium(false)
+                .build();
+
+        profile.setCreatedBy(oAuth2UserInfo.getName());
+        //profile.setId(UUID.randomUUID());
+
+        Profile savedProfile = profileRepository.save(profile);
+
         User user = new User();
 
         user.setProvider(AuthProvider.valueOf(oAuth2UserRequest.getClientRegistration().getRegistrationId()));
@@ -68,6 +82,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setEmail(oAuth2UserInfo.getEmail());
         user.setImageUrl(oAuth2UserInfo.getImageUrl());
         user.setToken(oAuth2UserRequest.getAccessToken().getTokenValue());
+        user.setUserId(savedProfile.getId().toString());
+
         return userRepository.save(user);
     }
 

@@ -1,8 +1,8 @@
 package com.primlook.memester.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.primlook.memester.domain.util.AuthProvider;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,6 +32,7 @@ public class User {
     @Column(nullable = false)
     private String email;
 
+    @Lob
     private String imageUrl;
 
     @NotNull
@@ -44,6 +45,8 @@ public class User {
     private String providerId;
 
     private String token;
+
+    private String userId;
 
     @JsonIgnore
     public String getToken() {

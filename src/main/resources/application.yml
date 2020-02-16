@@ -17,7 +17,7 @@ feign:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/spring_social?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/spring_social
     username: root
     password: root
   jpa:
@@ -27,7 +27,15 @@ spring:
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        dialect: org.hibernate.dialect.MySQL5Dialect
+      javax:
+        persistence:
+          schema-generation:
+            scripts:
+              action: create
+              create-target: create.sql
+            create-source: metadata
+    generate-ddl: true
   security:
     oauth2:
       client:
