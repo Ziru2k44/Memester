@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 
 /**
  * Created by Bernardo on 1/19/2020
@@ -17,9 +16,8 @@ import javax.validation.constraints.Null;
 @Builder
 public class CategoryDto {
 
-    @Null( message = "${validatedValue} must be null")
+    @NotNull
     private Long id;
 
-    @NotNull
     private String description;
 }
