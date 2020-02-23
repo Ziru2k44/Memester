@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.io.Serializable;
 
 /**
  * Created by Bernardo on 1/19/2020
@@ -15,7 +16,9 @@ import javax.validation.constraints.Null;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LanguageDto {
+public class LanguageDto implements Serializable {
+
+    private static final long serialVersionUID = 6679430269720316063L;
 
     @Null
     private Long id;

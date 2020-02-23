@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.Set;
 
@@ -20,7 +21,9 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MemeDto {
+public class MemeDto implements Serializable {
+
+    private static final long serialVersionUID = 7800729392868951865L;
 
     @Null
     private String id;

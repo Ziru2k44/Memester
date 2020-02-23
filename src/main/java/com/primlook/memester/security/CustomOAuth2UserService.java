@@ -82,7 +82,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setEmail(oAuth2UserInfo.getEmail());
         user.setImageUrl(oAuth2UserInfo.getImageUrl());
         user.setToken(oAuth2UserRequest.getAccessToken().getTokenValue());
-        user.setUserId(savedProfile.getId().toString());
+        user.setUserId(savedProfile.getId());
 
         return userRepository.save(user);
     }

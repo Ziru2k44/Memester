@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * Created by Bernardo on 1/19/2020
@@ -14,7 +15,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CategoryDto {
+public class CategoryDto implements Serializable {
+
+    private static final long serialVersionUID = -6508973628756110433L;
 
     @NotNull
     private Long id;

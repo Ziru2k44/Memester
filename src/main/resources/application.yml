@@ -16,6 +16,9 @@ feign:
         loggerLevel: full
 
 spring:
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
   datasource:
     url: jdbc:mysql://localhost:3306/spring_social
     username: root
