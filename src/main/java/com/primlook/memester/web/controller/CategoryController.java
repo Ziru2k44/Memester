@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.primlook.memester.constants.Constants.DEFAULT_PAGE_NUMBER;
+import static com.primlook.memester.constants.Constants.DEFAULT_PAGE_SIZE;
+
 /**
  * Created by Bernardo on 2/23/2020
  */
@@ -24,9 +27,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
-
-    private static final Integer DEFAULT_PAGE_NUMBER = 0;
-    private static final Integer DEFAULT_PAGE_SIZE = 25;
 
     private final CategoryService categoryService;
 
